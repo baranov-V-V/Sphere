@@ -1,0 +1,280 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe,
+
+ВНЕЗАПНО: _matherr(): Математическая ошибка 1 (_DOMAIN): Нарушение области определения в функции sqrt (-40000, [0]). Она вернет значение -1.#IND.
+
+С помощью __setusermatherr() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0x39B8 (Main), errno: 33 (Domain error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000046322D in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: _txError() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/TXLib.h (10689)
+# 1 0x0000000000463825 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: _txOnMatherr() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/TXLib.h (10846)
+# 2 0x0000000000476D8B in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: __mingw_raise_matherr()
+# 3 0x0000000000477F83 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: sqrt()
+
+# 4 0x000000000043B16C in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: draw() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (103):
+
+    101:             double y = renderer.to_coord_y(iy) - coord.y; 
+    102: 
+=>  103:             vec3d normal(x, y, sqrt(radius * radius - x * x - y * y));
+    104:             vec3d n_norm = ~normal;
+    105:             vec3d v_norm = ~(view_pos - normal);
+
+# 5 0x00000000004756F4 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: main() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/main.cpp (10):
+
+      8: 
+      9:     PhongSphere s(400, 400, 200, RGB(0, 255, 0), RGB(20, 20, 20), RGB(0, 200, 255), vec3d(0, 600, 0), vec3d(400, 400, 1000));
+=>   10:     s.draw(render);
+     11:     return 0;
+     12: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 03:02:01, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 03:02:06
+
+Run file:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe
+Directory:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x000000000043B64F в функции CorrectColor() в файле C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp на строке 143. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0x541C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000043B64F in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: CorrectColor() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (143):
+
+    141: 
+    142: double CorrectColor(double color) {
+=>  143:     if (color > 1) {
+    144:         color = 1;
+    145:     }
+
+# 1 0x000000000043B5A1 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: draw() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (135):
+
+    133:             */
+    134:             if ((buf_pos < window->get_size_x() * window->get_size_y()) && buf_pos >= 0) {
+=>  135:                 win_buf[buf_pos] = ToRGBQUAD(CorrectColor(red) * 255, CorrectColor(green) * 255, CorrectColor(blue) * 255);
+    136:             }
+    137:         }
+
+# 2 0x0000000000475874 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: main() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/main.cpp (10):
+
+      8: 
+      9:     PhongSphere s(400, 400, 200, RGB(100, 240, 0), RGB(100, 120, 120), RGB(0, 200, 255), vec3d(0, 600, 0), vec3d(400, 400, 1000));
+=>   10:     s.draw(render);
+     11:     return 0;
+     12: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 03:58:19, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 03:58:27
+
+Run file:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe
+Directory:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x000000000043B64F в функции CorrectColor() в файле C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp на строке 143. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0x541C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000043B64F in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: CorrectColor() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (143):
+
+    141: 
+    142: double CorrectColor(double color) {
+=>  143:     if (color > 1) {
+    144:         color = 1;
+    145:     }
+
+# 1 0x000000000043B5A1 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: draw() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (135):
+
+    133:             */
+    134:             if ((buf_pos < window->get_size_x() * window->get_size_y()) && buf_pos >= 0) {
+=>  135:                 win_buf[buf_pos] = ToRGBQUAD(CorrectColor(red) * 255, CorrectColor(green) * 255, CorrectColor(blue) * 255);
+    136:             }
+    137:         }
+
+# 2 0x0000000000475874 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: main() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/main.cpp (10):
+
+      8: 
+      9:     PhongSphere s(400, 400, 200, RGB(100, 240, 0), RGB(100, 120, 120), RGB(0, 200, 255), vec3d(0, 600, 0), vec3d(400, 400, 1000));
+=>   10:     s.draw(render);
+     11:     return 0;
+     12: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 03:58:19, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 03:58:28
+
+Run file:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe
+Directory:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x000000000043B64F в функции CorrectColor() в файле C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp на строке 143. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0x204 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000043B64F in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: CorrectColor() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (143):
+
+    141: 
+    142: double CorrectColor(double color) {
+=>  143:     if (color >= 1) {
+    144:         color = 1;
+    145:     }
+
+# 1 0x000000000043B5A1 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: draw() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (135):
+
+    133:             */
+    134:             if ((buf_pos < window->get_size_x() * window->get_size_y()) && buf_pos >= 0) {
+=>  135:                 win_buf[buf_pos] = ToRGBQUAD(CorrectColor(red) * 255, CorrectColor(green) * 255, CorrectColor(blue) * 255);
+    136:             }
+    137:         }
+
+# 2 0x0000000000475874 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: main() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/main.cpp (10):
+
+      8: 
+      9:     PhongSphere s(400, 400, 200, RGB(100, 240, 0), RGB(100, 120, 120), RGB(0, 200, 255), vec3d(0, 600, 0), vec3d(400, 400, 1000));
+=>   10:     s.draw(render);
+     11:     return 0;
+     12: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 03:58:19, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 04:04:53
+
+Run file:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe
+Directory:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x000000000043B64F в функции CorrectColor() в файле C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp на строке 143. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0x204 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000043B64F in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: CorrectColor() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (143):
+
+    141: 
+    142: double CorrectColor(double color) {
+=>  143:     if (color >= 1) {
+    144:         color = 1;
+    145:     }
+
+# 1 0x000000000043B5A1 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: draw() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (135):
+
+    133:             */
+    134:             if ((buf_pos < window->get_size_x() * window->get_size_y()) && buf_pos >= 0) {
+=>  135:                 win_buf[buf_pos] = ToRGBQUAD(CorrectColor(red) * 255, CorrectColor(green) * 255, CorrectColor(blue) * 255);
+    136:             }
+    137:         }
+
+# 2 0x0000000000475874 in C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe: main() at C:/Documents and Settings/VBAR/Documents/Programs_C/Sphere/main.cpp (10):
+
+      8: 
+      9:     PhongSphere s(400, 400, 200, RGB(100, 240, 0), RGB(100, 120, 120), RGB(0, 200, 255), vec3d(0, 600, 0), vec3d(400, 400, 1000));
+=>   10:     s.draw(render);
+     11:     return 0;
+     12: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 03:58:19, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 04:04:53
+
+Run file:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere\main.exe
+Directory:	C:\Documents and Settings\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------
