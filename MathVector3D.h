@@ -117,6 +117,12 @@ T operator*(const MathVector3D<T>& lhs, const MathVector3D<T>& rhs) {
 }
 
 template <typename T>
+MathVector3D<T> operator&(const MathVector3D<T>& lhs, const MathVector3D<T>& rhs) {
+    MathVector3D<T> result(lhs.get_x() * rhs.get_x(), lhs.get_y() * rhs.get_y(), lhs.get_z() * rhs.get_z());
+    return result;
+}
+
+template <typename T>
 std::ostream& operator<<(std::ostream& stream, const MathVector3D<T>& vector) {
     vector.print(stream);
     return stream;

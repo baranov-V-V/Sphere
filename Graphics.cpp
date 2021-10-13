@@ -25,8 +25,8 @@ Texture::~Texture() {
     txDeleteDC(screen);
 }
 
-void Texture::show_on(const HDC& target) const {
-    txBitBlt(target, coord.x, coord.y, 0, 0, screen);
+void Texture::show_on(const Window* window) const {
+    txBitBlt(window->get_hdc(), coord.x, coord.y, 0, 0, screen);
 }
 
 void Renderer::draw_line(double x_begin, double y_begin, double x_end, double y_end, COLORREF color, int thickness) const {
@@ -86,9 +86,6 @@ void PhongSphere::draw(const Renderer& renderer) const {
     int x2 = renderer.to_pixel_x(coord.x + radius);
     int y1 = renderer.to_pixel_y(coord.y + radius);
     int y2 = renderer.to_pixel_y(coord.y - radius);
-    
-    //cout << "normal: " << normal << std::endl;
-    //cout << "ambient: " << ambient_intense << "light: " << light_intense << std::endl;
 
     for(int iy = y2; iy < y1; ++iy) {
         for(int ix = x1; ix < x2; ++ix) {
@@ -98,7 +95,10 @@ void PhongSphere::draw(const Renderer& renderer) const {
             }
             double x = renderer.to_coord_x(ix) - coord.x;
             double y = renderer.to_coord_y(iy) - coord.y; 
-
+            
+            if (radius * radius - x * x - y * y < 0) {
+                continue;
+            }
 
             vec3d normal(x, y, sqrt(radius * radius - x * x - y * y));
             vec3d n_norm = ~normal;
@@ -108,7 +108,6 @@ void PhongSphere::draw(const Renderer& renderer) const {
 
             double k_diff = n_norm * lm_norm;
             double product = rm_norm * v_norm;
-            //cout << "k_diff: " << k_diff << "k_spec: " << spec << std::endl;
             
             if (k_diff < 0) {
                 k_diff = 0;
@@ -119,9 +118,8 @@ void PhongSphere::draw(const Renderer& renderer) const {
             double k_spec = pow(product, 30);
             
             vec_c sphere_color = ToVec(color);
-            double red = ambient_intense.get_x() * sphere_color.get_x() + k_diff * light_intense.get_x() * sphere_color.get_x() + k_spec * light_intense.get_x();
-            double green = ambient_intense.get_y() * sphere_color.get_y() + k_diff * light_intense.get_y() * sphere_color.get_y() + k_spec * light_intense.get_y();
-            double blue = ambient_intense.get_z() * sphere_color.get_z() + k_diff * light_intense.get_z() * sphere_color.get_z() + k_spec * light_intense.get_z();
+            vec_c result_color = ambient_intense & sphere_color + k_diff * (light_intense & sphere_color) + k_spec * light_intense;
+            double red = result_color.get_x(), green = result_color.get_y(), blue = result_color.get_z();
             if ((buf_pos < window->get_size_x() * window->get_size_y()) && buf_pos >= 0) {
                 win_buf[buf_pos] = ToRGBQUAD(CorrectColor(red) * 255, CorrectColor(green) * 255, CorrectColor(blue) * 255);
             }

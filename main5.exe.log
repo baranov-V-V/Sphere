@@ -1,0 +1,208 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe,
+
+ВНЕЗАПНО: _matherr(): Математическая ошибка 1 (_DOMAIN): Нарушение области определения в функции sqrt (-3.33067e-016, [0]). Она вернет значение -1.#IND.
+
+С помощью __setusermatherr() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0xCE0 (Main), errno: 33 (Domain error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0000000000463489 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: _txError() at C:/Users/VBAR/Documents/Programs_C/Sphere/TXLib.h (10689)
+# 1 0x0000000000463A81 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: _txOnMatherr() at C:/Users/VBAR/Documents/Programs_C/Sphere/TXLib.h (10846)
+# 2 0x00000000004773BB in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: __mingw_raise_matherr()
+# 3 0x00000000004785B3 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: sqrt()
+
+# 4 0x000000000043B1EA in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: draw() at C:/Users/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (99):
+
+     97:             double y = renderer.to_coord_y(iy) - coord.y; 
+     98: 
+=>   99:             vec3d normal(x, y, sqrt(radius * radius - x * x - y * y));
+    100:             vec3d n_norm = ~normal;
+    101:             vec3d v_norm = ~(view_pos - normal);
+
+# 5 0x0000000000475CA7 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: main() at C:/Users/VBAR/Documents/Programs_C/Sphere/main.cpp (31):
+
+     29:         
+     30:         s.set_view(vec3d(x + z * sin(deg_h), y + z * sin(deg_v), z * cos(deg_h)));
+=>   31:         s.draw(render);
+     32:         texture.show_on(&main_window);
+     33:         txSleep(30);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 13:18:28, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 13:18:36
+
+Run file:	C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe
+Directory:	C:\Users\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe,
+
+ВНЕЗАПНО: _matherr(): Математическая ошибка 1 (_DOMAIN): Нарушение области определения в функции sqrt (-4.44089e-016, [0]). Она вернет значение -1.#IND.
+
+С помощью __setusermatherr() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0x5D68 (Main), errno: 33 (Domain error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0000000000463489 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: _txError() at C:/Users/VBAR/Documents/Programs_C/Sphere/TXLib.h (10689)
+# 1 0x0000000000463A81 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: _txOnMatherr() at C:/Users/VBAR/Documents/Programs_C/Sphere/TXLib.h (10846)
+# 2 0x00000000004773BB in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: __mingw_raise_matherr()
+# 3 0x00000000004785B3 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: sqrt()
+
+# 4 0x000000000043B1EA in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: draw() at C:/Users/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (99):
+
+     97:             double y = renderer.to_coord_y(iy) - coord.y; 
+     98: 
+=>   99:             vec3d normal(x, y, sqrt(radius * radius - x * x - y * y));
+    100:             vec3d n_norm = ~normal;
+    101:             vec3d v_norm = ~(view_pos - normal);
+
+# 5 0x0000000000475CA7 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: main() at C:/Users/VBAR/Documents/Programs_C/Sphere/main.cpp (31):
+
+     29:         
+     30:         s.set_view(vec3d(x + z * sin(deg_h), y + z * sin(deg_v), z * cos(deg_h)));
+=>   31:         s.draw(render);
+     32:         texture.show_on(&main_window);
+     33:         txSleep(30);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 13:18:28, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 13:19:15
+
+Run file:	C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe
+Directory:	C:\Users\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe,
+
+ВНЕЗАПНО: _matherr(): Математическая ошибка 1 (_DOMAIN): Нарушение области определения в функции sqrt (-4.44089e-016, [0]). Она вернет значение -1.#IND.
+
+С помощью __setusermatherr() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0x4B54 (Main), errno: 33 (Domain error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0000000000463489 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: _txError() at C:/Users/VBAR/Documents/Programs_C/Sphere/TXLib.h (10689)
+# 1 0x0000000000463A81 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: _txOnMatherr() at C:/Users/VBAR/Documents/Programs_C/Sphere/TXLib.h (10846)
+# 2 0x00000000004773BB in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: __mingw_raise_matherr()
+# 3 0x00000000004785B3 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: sqrt()
+
+# 4 0x000000000043B1EA in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: draw() at C:/Users/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (99):
+
+     97:             double y = renderer.to_coord_y(iy) - coord.y; 
+     98: 
+=>   99:             vec3d normal(x, y, sqrt(radius * radius - x * x - y * y));
+    100:             vec3d n_norm = ~normal;
+    101:             vec3d v_norm = ~(view_pos - normal);
+
+# 5 0x0000000000475CA7 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: main() at C:/Users/VBAR/Documents/Programs_C/Sphere/main.cpp (31):
+
+     29:         
+     30:         s.set_view(vec3d(x + z * sin(deg_h), y + z * sin(deg_v), z * cos(deg_h)));
+=>   31:         s.draw(render);
+     32:         texture.show_on(&main_window);
+     33:         txSleep(30);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 13:18:28, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 13:19:18
+
+Run file:	C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe
+Directory:	C:\Users\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe,
+
+ВНЕЗАПНО: _matherr(): Математическая ошибка 1 (_DOMAIN): Нарушение области определения в функции sqrt (-4.44089e-016, [0]). Она вернет значение -1.#IND.
+
+С помощью __setusermatherr() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400], Instance: 0x0000000000561EA0 (64-bit), Flags: Cmdre0, Thread: 0x5204 (Main), errno: 33 (Domain error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0000000000463489 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: _txError() at C:/Users/VBAR/Documents/Programs_C/Sphere/TXLib.h (10689)
+# 1 0x0000000000463A81 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: _txOnMatherr() at C:/Users/VBAR/Documents/Programs_C/Sphere/TXLib.h (10846)
+# 2 0x00000000004773BB in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: __mingw_raise_matherr()
+# 3 0x00000000004785B3 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: sqrt()
+
+# 4 0x000000000043B1EA in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: draw() at C:/Users/VBAR/Documents/Programs_C/Sphere/Graphics.cpp (99):
+
+     97:             double y = renderer.to_coord_y(iy) - coord.y; 
+     98: 
+=>   99:             vec3d normal(x, y, sqrt(radius * radius - x * x - y * y));
+    100:             vec3d n_norm = ~normal;
+    101:             vec3d v_norm = ~(view_pos - normal);
+
+# 5 0x0000000000475CA7 in C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe: main() at C:/Users/VBAR/Documents/Programs_C/Sphere/main.cpp (31):
+
+     29:         
+     30:         s.set_view(vec3d(x + z * sin(deg_h), y + z * sin(deg_v), z * cos(deg_h)));
+=>   31:         s.draw(render);
+     32:         texture.show_on(&main_window);
+     33:         txSleep(30);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 170, Date: 2021-03-13 03:10:30 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	TXLib.h
+Compiled:	Oct  4 2021 13:18:28, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 04 2021 13:19:47
+
+Run file:	C:\Users\VBAR\Documents\Programs_C\Sphere\main5.exe
+Directory:	C:\Users\VBAR\Documents\Programs_C\Sphere
+
+--------------------------------------------------

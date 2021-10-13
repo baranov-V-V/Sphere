@@ -95,6 +95,10 @@ class Shape {
 
     double get_x() const {return coord.x;};
     double get_y() const {return coord.y;};
+
+    void set_x(double x) { coord.x = x; };
+    void set_y(double y) { coord.y = y; };
+
     int get_type() const {return shape_type;};
 
   protected:
@@ -178,7 +182,7 @@ class Texture : public VirtualWindow {
     int get_coord_x() const;
     int get_coord_y() const;
     
-    void show_on(const HDC& target) const;
+    void show_on(const Window* window) const;
 
   private:
     Pair<int> coord;
